@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CodeMate AI</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div id="app" class="codemate-container">
+		<!-- Header -->
+		<header class="header">
+			<div class="header-content">
+				<h1 class="header-title">CodeMate AI</h1>
+				<div class="header-actions">
+					<button id="toggleUI" class="btn-icon" title="Toggle UI mode">
+						<span class="icon">≡</span>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<!-- Main Content -->
+		<main class="content">
+			<!-- AI & Model Selector -->
+			<section class="selector-section">
+				<div class="selector-group">
+					<label for="aiSelect" class="label">AI Provider</label>
+					<select id="aiSelect" class="select">
+						<option value="">Select AI Provider...</option>
+					</select>
+					<div id="aiModels" class="models-list"></div>
+				</div>
+
+				<div class="selector-group">
+					<label for="modelSelect" class="label">Model</label>
+					<select id="modelSelect" class="select" disabled>
+						<option value="">Select Model...</option>
+					</select>
+					<div class="model-info" id="modelInfo"></div>
+				</div>
+			</section>
+
+			<!-- File Selector -->
+			<section class="file-section">
+				<label for="fileSelect" class="label">Target File</label>
+				<select id="fileSelect" class="select">
+					<option value="">Select file...</option>
+				</select>
+			</section>
+
+			<!-- Operations Grid -->
+			<section class="operations-section">
+				<h2 class="section-title">Operations</h2>
+				<div class="operations-grid">
+					<!-- File Operations -->
+					<div class="operations-category">
+						<h3 class="category-title">File Operations</h3>
+						<div class="operations-list">
+							<button class="btn-operation" data-command="file.create" title="Create File">
+								<span class="op-icon">✎</span>
+								<span class="op-name">Create</span>
+							</button>
+							<button class="btn-operation" data-command="file.delete" title="Delete File">
+								<span class="op-icon">🗑</span>
+								<span class="op-name">Delete</span>
+							</button>
+							<button class="btn-operation" data-command="file.modify" title="Modify File">
+								<span class="op-icon">✏</span>
+								<span class="op-name">Modify</span>
+							</button>
+							<button class="btn-operation" data-command="file.copy" title="Copy File">
+								<span class="op-icon">⎘</span>
+								<span class="op-name">Copy</span>
+							</button>
+							<button class="btn-operation" data-command="file.move" title="Move File">
+								<span class="op-icon">→</span>
+								<span class="op-name">Move</span>
+							</button>
+							<button class="btn-operation" data-command="file.rename" title="Rename File">
+								<span class="op-icon">⟳</span>
+								<span class="op-name">Rename</span>
+							</button>
+						</div>
+					</div>
+
+					<!-- Debug Operations -->
+					<div class="operations-category">
+						<h3 class="category-title">Debug</h3>
+						<div class="operations-list">
+							<button class="btn-operation" data-command="debug.breakpoint" title="Set Breakpoint">
+								<span class="op-icon">●</span>
+								<span class="op-name">Break</span>
+							</button>
+							<button class="btn-operation" data-command="debug.watch" title="Add Watch">
+								<span class="op-icon">👁</span>
+								<span class="op-name">Watch</span>
+							</button>
+							<button class="btn-operation" data-command="debug.logging" title="Enable Logging">
+								<span class="op-icon">📋</span>
+								<span class="op-name">Log</span>
+							</button>
+						</div>
+					</div>
+
+					<!-- Tools Operations -->
+					<div class="operations-category">
+						<h3 class="category-title">Code Quality</h3>
+						<div class="operations-list">
+							<button class="btn-operation" data-command="tools.format" title="Format Code">
+								<span class="op-icon">⚙</span>
+								<span class="op-name">Format</span>
+							</button>
+							<button class="btn-operation" data-command="tools.lint" title="Lint Code">
+								<span class="op-icon">✓</span>
+								<span class="op-name">Lint</span>
+							</button>
+							<button class="btn-operation" data-command="tools.test" title="Generate Tests">
+								<span class="op-icon">✔</span>
+								<span class="op-name">Test</span>
+							</button>
+							<button class="btn-operation" data-command="tools.generate" title="Generate Code">
+								<span class="op-icon">⚡</span>
+								<span class="op-name">Gen</span>
+							</button>
+						</div>
+					</div>
+
+					<!-- Execution -->
+					<div class="operations-category">
+						<h3class="category-title">Execute</h3>
+						<div class="operations-list">
+							<button class="btn-operation" data-command="exec.run" title="Run File">
+								<span class="op-icon">▶</span>
+								<span class="op-name">Run</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Operations Status -->
+			<section class="status-section" id="statusSection" style="display: none;">
+				<h2 class="section-title">Active Operations</h2>
+				<div id="operationsList" class="operations-status-list"></div>
+			</section>
+
+			<!-- History -->
+			<section class="history-section">
+				<div class="history-header">
+					<h2 class="section-title">History</h2>
+					<button id="clearHistory" class="btn-text" title="Clear history">Clear</button>
+				</div>
+				<div id="historyList" class="history-list"></div>
+			</section>
+		</main>
+
+		<!-- Status Bar -->
+		<footer class="footer">
+			<div class="status" id="status">
+				<span class="status-indicator" id="statusIndicator"></span>
+				<span class="status-text" id="statusText">Ready</span>
+			</div>
+		</footer>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>

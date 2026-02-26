@@ -1,0 +1,125 @@
+{
+  "name": "codemate-ai",
+  "displayName": "CodeMate AI",
+  "description": "Enterprise-grade AI IDE assistant for VSCode with sidebar UI, multi-AI support (Claude, ChatGPT, Gemini, etc.), and intelligent file operations.",
+  "version": "1.0.0",
+  "publisher": "your-name",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "main": "./out/extension.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "ws": "^8.13.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "@types/ws": "^8.5.5",
+    "@types/vscode": "^1.70.0"
+  },
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "codemate.sidebar",
+          "name": "CodeMate AI",
+          "icon": "$(sparkle)",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "codemate.createFile",
+        "title": "CodeMate AI: Create File"
+      },
+      {
+        "command": "codemate.deleteFile",
+        "title": "CodeMate AI: Delete File"
+      },
+      {
+        "command": "codemate.modifyFile",
+        "title": "CodeMate AI: Modify File"
+      },
+      {
+        "command": "codemate.copyFile",
+        "title": "CodeMate AI: Copy File"
+      },
+      {
+        "command": "codemate.moveFile",
+        "title": "CodeMate AI: Move File"
+      },
+      {
+        "command": "codemate.renameFile",
+        "title": "CodeMate AI: Rename File"
+      },
+      {
+        "command": "codemate.runFile",
+        "title": "CodeMate AI: Run File"
+      },
+      {
+        "command": "codemate.debugFile",
+        "title": "CodeMate AI: Debug File"
+      },
+      {
+        "command": "codemate.formatCode",
+        "title": "CodeMate AI: Format Code"
+      },
+      {
+        "command": "codemate.lintCode",
+        "title": "CodeMate AI: Lint Code"
+      },
+      {
+        "command": "codemate.generateTests",
+        "title": "CodeMate AI: Generate Tests"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "CodeMate AI",
+      "properties": {
+        "codemate.backendUrl": {
+          "type": "string",
+          "default": "ws://localhost:8080",
+          "description": "WebSocket URL for the CodeMate backend"
+        },
+        "codemate.language": {
+          "type": "string",
+          "enum": ["auto", "en", "fr"],
+          "default": "auto",
+          "description": "Language for CodeMate UI (auto detects VSCode language when 'auto')"
+        },
+        "codemate.showSidebar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show CodeMate sidebar panel"
+        },
+        "codemate.enableAnimations": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable smooth animations in the UI"
+        }
+      }
+    }
+  },
+  "activationEvents": [
+    "onCommand:codemate.createFile",
+    "onCommand:codemate.deleteFile",
+    "onCommand:codemate.modifyFile",
+    "onCommand:codemate.copyFile",
+    "onCommand:codemate.moveFile",
+    "onCommand:codemate.renameFile",
+    "onCommand:codemate.runFile",
+    "onCommand:codemate.debugFile",
+    "onCommand:codemate.formatCode",
+    "onCommand:codemate.lintCode",
+    "onCommand:codemate.generateTests",
+    "onView:codemate.sidebar"
+  ]
+}

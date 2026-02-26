@@ -1,0 +1,15 @@
+.vscode-test
+**/*.map
+**/*.ts
+!**/*.d.ts
+.gitignore
+.yarnrc
+yarn.lock
+.prettierrc
+**/*.test.ts
+**/__tests__/**
+node_modules
+out/tests
+src/**
+.DS_Store
+*.vsix

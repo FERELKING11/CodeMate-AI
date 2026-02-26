@@ -1,0 +1,13 @@
+{
+  "selectAssistant": "Select assistant",
+  "enterFilename": "Enter filename",
+  "selectFile": "Select a file",
+  "enterContent": "Enter new content for the file",
+  "sentToBackend": "Instruction sent to backend",
+  "backendConnected": "Connected to backend",
+  "backendDisconnected": "Disconnected from backend, retrying...",
+  "backendError": "WebSocket error",
+  "backendResponse": "Backend response",
+  "noWorkspace": "No workspace folder is open",
+  "selectWorkspaceFilePlaceholder": "Choose a workspace file"
+}

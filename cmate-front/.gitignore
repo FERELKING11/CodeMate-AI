@@ -1,0 +1,9 @@
+out/
+node_modules/
+*.vsix
+.vscode-test/
+.DS_Store
+*.map
+dist/
+.env
+.env.local
